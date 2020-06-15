@@ -1,6 +1,6 @@
 // console.log('it works');
 
-// This is ok!
+// This is the menu list!
 
 const generateGreeting = () => {
     let greeting = "Welcome to my journal!";
@@ -22,6 +22,11 @@ const generateChoose3 = () => {
     const generateChoose3 = `${choose3}`;
     return generateChoose3;
 }
+const generateChoose4 = () => {
+    let choose4 = "Choose(4) to delete the last entry.";
+    const generateChoose4 = `${choose4}`;
+    return generateChoose4;
+}
 function chooseFromMenu() {
     var newLine = "\r\n"
     var msg = generateGreeting();
@@ -31,33 +36,13 @@ function chooseFromMenu() {
     msg += generateChoose2();
     msg += newLine;
     msg += generateChoose3();
+    msg += newLine;
+    msg += generateChoose4();
     const chooseFromMenu = `${msg}`;
     return chooseFromMenu;
 }
-// work with it
 
-// let listArray = [
-//     "Title: WHO waiting for evidence on Madagascar's herbal coronavirus cure" +'\n\n' +
-
-//     "Content: The World Health Organization has yet to receive any data or information about the effectiveness of a herbal cure for Covid-19 promoted by Madagascar's government, the UN health body has said. President Andry Rajoelina has been pushing products containing extracts of the artemisia plant as a treatment for the virus."
-//     ,
-
-//     "Title: George Floyd death: 'Stop the pain', brother tells US Congress"
-//     +'\n\n' +
-//     "Content: The brother of the African American man whose death in police custody has sparked global protests, has urged the US Congress to pass reforms on police brutality and 'stop the pain'."
-// ,
-//     "Title: The Forgotten Story of How 13 Black Men Broke the Navy’s Toughest Color Barrier" +'\n\n' +
-//     "Content: Sam Barnes racked his brain one chilly morning in January 1944, wondering what he might have done wrong. Barnes, a popular African American petty officer working at Great Lakes Naval Training Station in Illinois, had been in the Navy for 15 months and had never been disciplined. Why, he wondered, was he being ordered to the white side of the segregated station, a command usually reserved for sailors who were in trouble?"
-// ];
-
-// const list = () => {
-//  	let randomIndex = Math.floor(Math.random() * listArray.length);
-//  	let string = listArray[randomIndex];
-//  	const myLists = `"${string}"`;
-//  	return myLists;
-//  };
-
-// With object
+// This is the object array
 let journalLists = [
     {
         Title: "WHO waiting for evidence on Madagascar's herbal coronavirus cure.",
@@ -73,50 +58,35 @@ let journalLists = [
     }
 ];
 
-//console.log(journalLists.firstList.Title + '\n\n' + journalLists.firstList.Content);
-// const list = () => {
-//  	let randomIndex = Math.floor(Math.random() * listArray.length);
-//  	let string = listArray[randomIndex];
-//  	const myLists = `"${string}"`;
-//  	return myLists;
-//  };
 
 // This is ok!
 
- let menu = Number(prompt(chooseFromMenu()));
- let entry = "";
-  if (menu === 1) {
+let menu = Number(prompt(chooseFromMenu())); // Show the user the menu list 
+
+if (menu === 1) { //This is the code block of the first list or choice
       for (let i = 0; i < journalLists.length; i++) {
         alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
       }
-  } else {
-          console.error('Please make sure of your entry:');
-     }
-
-    menu = Number(prompt(chooseFromMenu()));
-     if (menu === 2) {
+} else if (menu === 2) { //This is the code block of the second list or choice
         yourEntryTitle = prompt("Enter your jornal title:");
         yourEntryContent = prompt("Enter your jornal content:");
+        askForEntry = prompt("Do you want to see your entry? (say yes or no!)");
+        let checking = 'yes';
+        if (askForEntry === checking) {
+        let whichEntry = prompt('Which entry do you want? (please write "title" for the title "content" for the content and "both" if you want to see both:)');
+        if (whichEntry === "title") {
+                alert(yourEntryTitle);
+        } else if (whichEntry === "content") {
+                alert(yourEntryContent);
+        } else if (whichEntry === "both") {
+                 alert(yourEntryTitle + '\n\n' + yourEntryContent);
+     } 
    }
-   let askForEntry = prompt("Do you want to see your entry? (say yes or no!)");
-  // let checking entry = 'yes';
- if (askForEntry === 'yes') {
-     let whichEntry = prompt('Which entry do you want? (please write "title" for the title "content" for the content and "both" if you want to see both:)');
-     if (whichEntry === "title") {
-        alert(yourEntryTitle);
-     } else if (whichEntry === "content") {
-        alert(yourEntryContent);
-     } else if (whichEntry === "both") {
-         alert(yourEntryTitle + '\n\n' + yourEntryContent);
-     } else {
-         alert("Make sure that you spelled it correctly");
-     }
- 	// while (whichEntry !== "title" && whichEntry !== "content" && whichEntry !== "both") {
-    //     whichEntry = prompt('Which entry do you want? (please write "title" for the title "content" for the content and "both" if you want to see both:)');
-    //  }
-    }
-    menu = Number(prompt(chooseFromMenu()));
-    if (menu === 3) {
-        alert('Thank you for joinig my journal! ❤️');
-    }
-    
+} else if (menu === 3) { //This is the code block of the third list or choice
+       alert('Thank you for joinig my journal today ! ☺ ❤️ ♪');
+} else if (menu === 4) { // This is the code block of the fourth list or choice also the first bonus
+    journalLists.pop();
+    for (let i = 0; i < journalLists.length; i++) {
+        alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
+      }
+}
