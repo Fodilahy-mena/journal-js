@@ -91,6 +91,10 @@
 // alert('Thank you for using my quote generator ❤️');
 
 //2nd try
+// alert(journalLists.firstList.Title + '\n\n' + journalLists.firstList.Content);
+        // alert(journalLists.secondList.Title + '\n\n' + journalLists.secondList.Content);
+        // alert(journalLists.thirdList.Title + '\n\n' + journalLists.thirdList.Content);
+
 
 let array1 = ["You", "maybe", "alone", "becomes"];
 let array2 = ["Really", "But", "everything", "suppose"];
