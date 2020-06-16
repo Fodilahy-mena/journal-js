@@ -41,6 +41,14 @@ function chooseFromMenu() {
     const chooseFromMenu = `${msg}`;
     return chooseFromMenu;
 }
+// I can write this menu list in a consise way like this:
+// const chooseFromMenu = `Welcome to my journal! 
+// Choose (1) for list of all entries.
+// Choose (2) for adding a new entry.
+// Choose (3) to quit.
+// Choose (4) to delete the last entry.
+// Choose (5) to delete a specific entry by its index.
+// `;
 
 // This is the object array
 let journalLists = [
@@ -59,34 +67,74 @@ let journalLists = [
 ];
 
 
-// This is ok!
+// This is my origin code in the exam or the first method that I did!
+
+// let menu = Number(prompt(chooseFromMenu())); // Show the user the menu list 
+
+// if (menu === 1) { //This is the code block of the first list or choice
+//       for (let i = 0; i < journalLists.length; i++) {
+//         alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
+//       }
+// } else if (menu === 2) { //This is the code block of the second list or choice
+//         yourEntryTitle = prompt("Enter your jornal title:");
+//         yourEntryContent = prompt("Enter your jornal content:");
+//         askForEntry = prompt("Do you want to see your entry? (say yes or no!)");
+//         let checking = 'yes';
+//         if (askForEntry === checking) {
+//         let whichEntry = prompt('Which entry do you want? (please write "title" for the title "content" for the content and "both" if you want to see both:)');
+//         if (whichEntry === "title") {
+//                 alert(yourEntryTitle);
+//         } else if (whichEntry === "content") {
+//                 alert(yourEntryContent);
+//         } else if (whichEntry === "both") {
+//                  alert(yourEntryTitle + '\n\n' + yourEntryContent);
+//      } 
+//    }
+// } else if (menu === 3) { //This is the code block of the third list or choice
+//        alert('Thank you for joinig my journal today ! ☺ ❤️ ♪');
+// } else if (menu === 4) { // This is the code block of the fourth list or choice also the first bonus
+//     journalLists.pop();
+//     for (let i = 0; i < journalLists.length; i++) {
+//         alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
+//       }
+// }
+
+// Here is the second method to do it!
 
 let menu = Number(prompt(chooseFromMenu())); // Show the user the menu list 
 
-if (menu === 1) { //This is the code block of the first list or choice
-      for (let i = 0; i < journalLists.length; i++) {
-        alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
-      }
-} else if (menu === 2) { //This is the code block of the second list or choice
-        yourEntryTitle = prompt("Enter your jornal title:");
-        yourEntryContent = prompt("Enter your jornal content:");
-        askForEntry = prompt("Do you want to see your entry? (say yes or no!)");
-        let checking = 'yes';
-        if (askForEntry === checking) {
-        let whichEntry = prompt('Which entry do you want? (please write "title" for the title "content" for the content and "both" if you want to see both:)');
-        if (whichEntry === "title") {
-                alert(yourEntryTitle);
-        } else if (whichEntry === "content") {
-                alert(yourEntryContent);
-        } else if (whichEntry === "both") {
-                 alert(yourEntryTitle + '\n\n' + yourEntryContent);
-     } 
-   }
-} else if (menu === 3) { //This is the code block of the third list or choice
-       alert('Thank you for joinig my journal today ! ☺ ❤️ ♪');
-} else if (menu === 4) { // This is the code block of the fourth list or choice also the first bonus
-    journalLists.pop();
-    for (let i = 0; i < journalLists.length; i++) {
-        alert(journalLists[i].Title +'\n\n'+ journalLists[i].Content);
-      }
+while (menu !== 3) {
+    switch (menu) {
+        case 1: //This is the code block of the first list or choice
+            for (let i = 0; i < journalLists.length; i++) {
+                let givenEntryString = `Title: ${journalLists[i].Title}
+                
+Content: ${journalLists[i].Content}`;
+                alert(givenEntryString);
+            }
+            break;
+        case 2: //This is the code block of the second list or choice
+            const yourEntryTitle = prompt("Enter your jornal title:");
+            const yourEntryContent = prompt("Enter your jornal content:");
+            let usersEntry = {
+                Title: yourEntryTitle,
+                Content: yourEntryContent,
+            };
+            journalLists.push(usersEntry);
+            break;
+        case 4: //This is the code block of the fourth list or choice
+            const journalListsDeleted = journalLists.pop();
+            alert(`We have deleted the last entry iside of journalLists: ${journalListsDeleted.Title}`);
+            break;
+        case 5: //This is the code block of the fith list or choice
+            let whichIndexToDelete = Number(prompt(`Enter the entry's index to delete (1 to ${journalLists.length})`));
+            let deleteFromEntry = journalLists.splice(whichIndexToDelete--, 1);
+            alert(`This is what you have deleted recentelly: ${deleteFromEntry[0].Title}`);
+            break;
+        default:
+            alert(`Make sure that you have chosen one of those choices: (1, 2, 3, 4, 5)`);
+
+    }
+    menu = Number(prompt(chooseFromMenu())); // Reshow the user the menu list 
 }
+alert('Thank you for joinig my journal today ! ☺ ♪'); //This is the end of the program if the user entered the third choice
